@@ -1,0 +1,17 @@
+version: "2"
+services:
+  front-drjosiascostaneto:
+    container_name: front-drjosiascostaneto
+    build: .
+    volumes:
+      - .:/usr/front-drjosiascostaneto
+      - ./node_modules:/usr/front-drjosiascostaneto/node_modules
+    ports:
+      - "88:80"
+    networks:
+      - drjosiascostaneto 
+    restart: always
+
+networks:
+  puravidaprime:
+    driver: bridge
