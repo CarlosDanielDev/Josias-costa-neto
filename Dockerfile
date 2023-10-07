@@ -24,6 +24,6 @@ COPY vite.config.ts .
 
 RUN npm install typescript
 
-EXPOSE 8080
+EXPOSE 80 
 
 CMD [ "npm", "run", "preview" ]
