@@ -1,22 +1,29 @@
 FROM node:19-alpine as build
 
-WORKDIR /usr/app/
-ENV PATH /usr/app/node_modules/.bin:$PATH
+WORKDIR /app
 
-COPY package.json /usr/app/package.json
-RUN npm install --silent
-#
-COPY . /usr/app
+COPY package.json .
+
+RUN npm install
+
+COPY . .
 
 RUN npm run build
 
-FROM nginx:1.16.0-alpine
+FROM node:19-alpine as prod 
 
-RUN rm /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-COPY .docker/nginx/nginx.conf /etc/nginx/conf.d
+COPY --from=build /app/dist /app/dist
 
-EXPOSE 80
+EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY package.json .
 
+COPY vite.config.ts .
+
+RUN npm install typescript
+
+EXPOSE 8080
+
+CMD [ "npm", "run", "preview" ]
