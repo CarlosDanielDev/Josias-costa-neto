@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components'
 import logoUrl from './logo.svg'
 import logoPrimaryUrl from './logo-primary.svg'
 
-
 type HeaderProps = {
   scrolling: boolean | undefined;
 }
@@ -17,10 +16,27 @@ export const MainHeader = styled.header<HeaderProps>`
   align-items: center;
   justify-content: space-between;
   background: transparent;
-  
+
+
+  .icon-style {
+    stroke: ${({ theme }) => theme.grayScale.white};
+
+    * {
+      stroke: inherit;
+    }
+  } 
+
  ${({ scrolling, theme }) => scrolling && css`
     z-index: 1000;
     background-color: ${theme.grayScale.white};
+
+    .icon-style {
+      stroke: ${theme.primary.brand};
+
+      * {
+        stroke: inherit;
+      }
+    }
 
     nav {
       a {
@@ -50,7 +66,7 @@ export const MainHeader = styled.header<HeaderProps>`
 
   }
   
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,7 +95,6 @@ export const Logo = styled.div<HeaderProps>`
     background: url(${logoPrimaryUrl});
     background-size: contain;
     background-repeat: no-repeat;
-
   }
 `;
 
@@ -110,7 +125,7 @@ export const Button = styled.button<HeaderProps>`
     color: ${({ theme }) => theme.primary.brand};
   }
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     visibility: hiddden; 
     opacity: 0;
     display: none;
@@ -142,7 +157,7 @@ export const NavContainer = styled.nav`
     margin-top: 32px;
   }
   
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     max-width: 970px;
     height: 98px;  
     visibility: visible;
@@ -193,7 +208,7 @@ export const NavItem = styled.a`
   }
 
   
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     color: ${({ theme }) => theme.grayScale.gray300};
     font-size: 1.8rem;
     border: 0;
@@ -210,7 +225,7 @@ export const NavText = styled.span`
   color: ${({ theme }) => theme.grayScale.white};
   font-size: 2rem;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     color: ${({ theme }) => theme.grayScale.gray300};
     font-size: 1.8rem;
     height: 1.8rem;

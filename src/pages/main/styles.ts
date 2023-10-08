@@ -3,21 +3,19 @@ import styled from 'styled-components'
 export const Wrapper = styled.div``;
 
 export const Main = styled.main`
-  background: ${({ theme }) => theme.clear.default};
   padding-bottom: 128px;
+  background: ${({ theme }) => theme.clear.default};
 `;
 
 export const Banner = styled.div`
   width: 100%;
-  /* background: url('https://via.placeholder.com/1960x566'); */
   background: url('/assets/banner.webp');
   background-repeat: no-repeat;
   height: 488px;
   display: flex;
   background-position: center center;
 
-  @media (min-width: 768px) {
-
+  @media ${({ theme }) => theme.medias.desktop} {
     background-size: cover;
     height: 566px;
   }
@@ -41,7 +39,7 @@ export const BannerTitle = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.grayScale.white};
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     font-size: 6.8rem;
     width: 915px;
   }
@@ -55,7 +53,7 @@ export const BannerSubtitle = styled.h2`
   margin-top: 24px;
   margin-bottom: 32px;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     font-size: 2.8rem;
     width: 100%;
 
@@ -78,7 +76,7 @@ export const ProcedureDisclaimer = styled.span`
   font-stretch: normal;
   color: ${({ theme }) => theme.grayScale.gray700};
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     font-size: 1.8rem;
     width: 770px; 
   }
@@ -110,7 +108,7 @@ export const Item = styled.div`
 
   flex-basis: 100%;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     width: 170px;
     flex-basis: 170px;
     margin-right: 30px;
@@ -153,7 +151,7 @@ export const ItemDescription = styled.p`
   font-size: 1.4rem;
   color: ${({ theme }) => theme.grayScale.gray700};
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     font-size: 1.2rem;
   }
 `;
@@ -179,7 +177,7 @@ export const CTAContainer = styled.div`
   margin-bottom: 64px;
   border-radius: 4px;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     background-position: center center;
   }
 `;
@@ -192,7 +190,7 @@ export const CTAText = styled.p`
   margin-bottom: 32px;
   color: ${({ theme }) => theme.grayScale.white};
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     width: 770px;
   }
 `;
@@ -204,23 +202,22 @@ export const AboutContainer = styled.div`
   justify-content: center;
   margin-bottom: 64px;
   
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     flex-direction: row;  
   }
 `;
 
 export const Profile = styled.div`
-  /* background: url('https://via.placeholder.com/270x270'); */
   background: url('/assets/images/profile.webp');
   background-size: cover;
-  background-position: top; /* Ajuste aqui */
+  background-position: top;
   background-repeat: no-repeat;
   width: 270px;
   height: 270px;
   border-radius: 50%;
   margin-bottom: 30px;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     margin: 0;
     margin-right: 30px;
   }
@@ -233,7 +230,7 @@ export const AboutContent = styled.div`
   border-radius: 4px;
   background: ${({ theme }) => theme.grayScale.white};
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     width: 470px;
     height: 270px;
   }
@@ -274,7 +271,7 @@ export const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     flex-direction: row; 
     align-items: center;
     justify-content: center;
@@ -289,7 +286,7 @@ export const ContactInfoContainer = styled.div`
   height: 480px;
   background: ${({ theme }) => theme.clear.light};
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     width: 400px;
     height: 480px;
   }
@@ -357,7 +354,7 @@ export const FooterContent = styled.div`
   justify-content: center;
   position: relative;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     margin: 0 auto;
     width: 970px;
   }
@@ -369,7 +366,7 @@ export const FooterMainContent = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     flex-direction: row;
     align-items: start;
     justify-content: space-between;
@@ -391,7 +388,7 @@ export const Ul = styled.ul`
   list-style: none;
 
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     margin-top: 0px;
   }
 `;
@@ -429,7 +426,7 @@ export const BottomInfoContainer = styled.div`
   justify-content: center;
   width: 100%;
 
-  @media (min-width: 768px) {
+  @media ${({ theme }) => theme.medias.desktop} {
     padding-left: 74px;
   }
 `;

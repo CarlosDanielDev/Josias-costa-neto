@@ -56,5 +56,8 @@ export const light = {
   },
   text: {
     primary: '#3d5a73',
+  },
+  medias: {
+    desktop: '(min-width: 768px)',
   }
 }
