@@ -4,6 +4,7 @@ import { Main } from './pages/main'
 import { ThemeProvider } from 'styled-components'
 import { light } from './styles/themes/light'
 import { GlobalStyles } from './styles/global'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

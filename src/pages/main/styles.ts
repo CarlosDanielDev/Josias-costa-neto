@@ -71,13 +71,12 @@ export const ProceduresContainer = styled.div`
 
 
 export const ProcedureDisclaimer = styled.span`
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   text-align: center;
   font-stretch: normal;
   color: ${({ theme }) => theme.grayScale.gray700};
 
   @media ${({ theme }) => theme.medias.desktop} {
-    font-size: 1.8rem;
     width: 770px; 
   }
 
@@ -148,7 +147,7 @@ export const ItemDescription = styled.p`
   widht: 170px;
   height: 100px;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: ${({ theme }) => theme.grayScale.gray700};
 
   @media ${({ theme }) => theme.medias.desktop} {
@@ -262,9 +261,14 @@ export const AboutName = styled(AboutContentTitle)`
 `;
 
 export const AboutBio = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   height: 1.4rem;
   color: ${({ theme }) => theme.grayScale.gray700};
+
+
+  @media ${({ theme }) => theme.medias.desktop} {
+    font-size: 1.4rem;
+  }
 `;
 
 export const ContactContainer = styled.div`

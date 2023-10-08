@@ -2,43 +2,14 @@ import { useEffect, useState, lazy } from 'react';
 import { FaLinkedin } from 'react-icons/fa';
 import { MdContentCopy, MdOutlineEmail, MdOutlineLocationOn, MdOutlinePhone } from 'react-icons/md';
 import { BiLogoInstagramAlt } from 'react-icons/bi'
+import { ToastContainer, toast } from 'react-toastify';
 import * as S from './styles';
 import { debounce } from '../../utils';
+import { data } from './data';
 
 const LazyHeader = lazy(() => import('../../components/header'));
 const LazyMap = lazy(() => import('../../components/map'));
 const LazyScheduleAppointment = lazy(() => import('../../components/schedule-appointment'))
-
-
-const base_path = '/assets/images/procedures'
-
-const procedures = [
-  {
-    title: 'Implantes',
-    icon: `${base_path}/implant.webp`,
-    description: 'Substitua os seus dentes ausentes por implantes dentários ou então próteses dentárias, restaurando assim a sua capacidade de voltar a mastigar firme, falar e sorrir com muita confiança e tranquilidade.',
-  },
-  {
-    title: 'Cirurgias',
-    icon: `${base_path}/surgery.webp`,
-    description: 'Resolva problemas específicos e também melhore a saúde bucal com procedimentos cirúrgicos odontológicos, como extração de sisos, enxertos ósseos e cirurgias de gengiva de forma eficiente.',
-  },
-  {
-    title: 'Próteses',
-    icon: `${base_path}/prosthesis.webp`,
-    description: 'Recupere seu sorriso com próteses personalizadas que podem ser fixas ou removíveis. Projetadas para se adaptarem perfeitamente à sua boca, proporcionando muito mais conforto e segurança.',
-  },
-  {
-    title: 'Facetas',
-    icon: `${base_path}/facet.webp`,
-    description: 'Tenha um novo sorriso brilhante, harmonioso e natural com facetas que são colocadas sobre os dentes para corrigirem as imperfeições estéticas dentárias como manchas, desalinhamentos e espaçamentos.',
-  },
-  {
-    title: 'Clínico Geral',
-    icon: `${base_path}/general.webp`,
-    description: 'Realize limpezas, restaurações, avaliações de rotina e tratamentos preventivos. Nosso objetivo é manter sua saúde bucal em dia e garantir um sorriso radiante e saudável ao longo da vida.',
-  },
-]
 
 export function Main() {
   const [scrollPosition, setScrollPosition] = useState<number>(0)
@@ -49,6 +20,16 @@ export function Main() {
   const condition = scrollPosition > 50;
   const whatsppLink = `https://wa.me/${phoneNumber}?text=${whatsappText}`
 
+  const notify = () => toast('Copiado!', {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
   const handleScroll = debounce(() => {
     const position = window.scrollY;
     setScrollPosition(position);
@@ -57,6 +38,7 @@ export function Main() {
   async function copyToClipboard(text: string): Promise<void> {
     try {
       await navigator.clipboard.writeText(text);
+      notify();
       console.log('Texto copiado com sucesso!');
     } catch (err) {
       console.error('Falha ao copiar o texto: ', err);
@@ -82,7 +64,6 @@ export function Main() {
       <S.Main>
         <S.Banner id="init">
           <LazyHeader scrolling={condition} />
-
           <S.BannerContent>
             <S.BannerTitle>
               Cuidando da função à estética,
@@ -107,7 +88,7 @@ export function Main() {
           </S.ProcedureDisclaimer>
           <S.ProceduesTitle id="procedures">Procedimentos</S.ProceduesTitle>
           <S.List>
-            {procedures.map(item => (
+            {data.map(item => (
               <S.Item key={item.title}>
                 <S.ItemBadge>
                   <S.BadgeImage src={item.icon} />
@@ -137,8 +118,8 @@ export function Main() {
               <S.Separator />
               <S.AboutName>Dr. Josias Costa Neto</S.AboutName>
               <S.AboutBio>
-                Atuo na Odontologia desde 2011, oferecendo tratamento de excelência, naquilo que é importante para o paciente restabelecer sua saúde bucal e também todo cuidado para prevenção. Com experiência em cirurgias
-                de implantes, enxertos ósseos, exodontias de sisos, próteses sobre implantes. Ofereço um tratamento odontológico personalizado e acolhedor para você e sua família.
+                Atuo na Odontologia desde 2011, oferecendo tratamento de excelência naquilo que é importante para o paciente restabelecer sua saúde bucal e também todo cuidado para prevenção. Com experiência em cirurgias
+                de implantes, enxertos ósseos, exodontias de sisos, próteses sobre implantes, ofereço um tratamento odontológico personalizado e acolhedor para você e sua família.
               </S.AboutBio>
             </S.AboutContent>
           </S.AboutContainer>
@@ -196,10 +177,10 @@ export function Main() {
                 Endereço
               </S.ContactInfoLabel>
             </S.ContactInfo>
-
             <S.ContactInfoValueButton onClick={() => copyToClipboard(`Edifício São Paulo Office — 6° andar,
                 sala 62. R.Frei Caneca, 33.
                 São Paulo / SP. 01307 - 00.`)}>
+
               < S.ContactInfoValue className="address" >
                 Edifício São Paulo Office — 6° andar,
                 sala 62. R. Frei Caneca, 33.
@@ -253,6 +234,21 @@ export function Main() {
             </S.Copyright>
           </S.BottomInfoContainer>
         </S.FooterContent>
+        <ToastContainer
+          style={{
+            fontSize: '1.8rem'
+          }}
+          position="top-left"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </S.Footer>
     </S.Wrapper >
   )
