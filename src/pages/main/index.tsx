@@ -53,6 +53,14 @@ export function Main() {
     window.location.href = url;
   }
 
+  const handleMenuClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -95,7 +103,7 @@ export function Main() {
             {data.map(item => (
               <S.Item key={item.title}>
                 <S.ItemBadge>
-                  <S.BadgeImage src={item.icon} />
+                  <S.BadgeImage alt={item.alt} src={item.icon} />
                 </S.ItemBadge>
                 <S.ItemTitle>{item.title}</S.ItemTitle>
                 <S.ItemDescription>{item.description}</S.ItemDescription>
@@ -202,19 +210,19 @@ export function Main() {
             <S.FooterLogo />
             <LazyScheduleAppointment onClick={() => redirectToUrl(whatsppLink)} className="outline" />
             <S.Ul>
-              <S.Li>
+              <S.Li onClick={(e) => handleMenuClick(e, 'init')}>
                 <S.ArrowRight />
                 <S.LiText href="#">
                   Início
                 </S.LiText>
               </S.Li>
-              <S.Li>
+              <S.Li onClick={(e) => handleMenuClick(e, 'procedures')}>
                 <S.ArrowRight />
                 <S.LiText href="#">
                   Procedimentos
                 </S.LiText>
               </S.Li>
-              <S.Li>
+              <S.Li onClick={(e) => handleMenuClick(e, 'about')}>
                 <S.ArrowRight />
                 <S.LiText href="#">
                   Sobre mim
@@ -224,11 +232,11 @@ export function Main() {
           </S.FooterMainContent>
           <S.BottomInfoContainer>
             <S.SocialMediaContainer>
-              <a href="https://www.linkedin.com/in/josias-costa-neto-9b3655104/" target="_blank" style={{ cursor: 'pointer' }}>
+              <a href="https://www.linkedin.com/in/josias-costa-neto-9b3655104/" aria-label="linkedIn" target="_blank" style={{ cursor: 'pointer' }}>
                 <FaLinkedin size={32} />
               </a>
 
-              <a href="https://www.instagram.com/drjosiascostaneto/" target="_blank" style={{ cursor: 'pointer' }}>
+              <a href="https://www.instagram.com/drjosiascostaneto/" target="_blank" aria-label="instagram" style={{ cursor: 'pointer' }}>
                 <BiLogoInstagramAlt size={32} />
               </a>
             </S.SocialMediaContainer>

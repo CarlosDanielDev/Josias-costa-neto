@@ -96,6 +96,7 @@ export const List = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const Item = styled.div`
