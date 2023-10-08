@@ -5,6 +5,7 @@ import { Procedure as ProcedureIcon } from './procedure'
 import { Home as HomeIcon } from './home'
 import { Contact as ContactIcon } from './contact'
 import { About as AboutIcon } from './about'
+import { whatsppLink } from '../../constants'
 
 const LazyScheduleAppointment = lazy(() => import('../schedule-appointment'))
 
@@ -24,8 +25,11 @@ export function MainHeader({ scrolling }: HeaderProps) {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-
   };
+
+  function redirectToUrl(url: string): void {
+    window.location.href = url;
+  }
 
   return (
     <S.MainHeader scrolling={!!scrolling} className={active}>
@@ -55,7 +59,7 @@ export function MainHeader({ scrolling }: HeaderProps) {
           <ContactIcon className="icon-style" />
           <S.NavText>Contato</S.NavText>
         </S.NavItem>
-        <LazyScheduleAppointment />
+        <LazyScheduleAppointment onClick={() => redirectToUrl(whatsppLink)} />
       </S.NavContainer>
     </S.MainHeader>
   );

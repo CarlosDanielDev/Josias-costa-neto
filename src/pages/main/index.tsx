@@ -2,10 +2,13 @@ import { useEffect, useState, lazy } from 'react';
 import { FaLinkedin } from 'react-icons/fa';
 import { MdContentCopy, MdOutlineEmail, MdOutlineLocationOn, MdOutlinePhone } from 'react-icons/md';
 import { BiLogoInstagramAlt } from 'react-icons/bi'
-import { ToastContainer, toast } from 'react-toastify';
-import * as S from './styles';
-import { debounce } from '../../utils';
+import { ToastContainer, ToastOptions, toast } from 'react-toastify';
+
 import { data } from './data';
+import * as S from './styles';
+
+import { debounce } from '../../utils';
+import { phoneNumber, whatsppLink } from '../../constants'
 
 const LazyHeader = lazy(() => import('../../components/header'));
 const LazyMap = lazy(() => import('../../components/map'));
@@ -14,13 +17,10 @@ const LazyScheduleAppointment = lazy(() => import('../../components/schedule-app
 export function Main() {
   const [scrollPosition, setScrollPosition] = useState<number>(0)
   const currentDate = new Date().getFullYear();
-  const phoneNumber = '11949313064';
-  const whatsappText = 'Olá! Vi seu site e estou interessado(a) em saber mais sobre os serviços odontológicos que você oferece. Pode me ajudar?';
 
   const condition = scrollPosition > 50;
-  const whatsppLink = `https://wa.me/${phoneNumber}?text=${whatsappText}`
 
-  const notify = () => toast('Copiado!', {
+  const defaultToastConfig: ToastOptions = {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: true,
@@ -29,21 +29,25 @@ export function Main() {
     draggable: true,
     progress: undefined,
     theme: "light",
-  });
-  const handleScroll = debounce(() => {
-    const position = window.scrollY;
-    setScrollPosition(position);
-  }, 50);
+  }
+
+  const notifySuccess = () => toast('Copiado!', defaultToastConfig);
+
+  const notifyError = () => toast.error('Ops, tente novamente', defaultToastConfig);
 
   async function copyToClipboard(text: string): Promise<void> {
     try {
       await navigator.clipboard.writeText(text);
-      notify();
-      console.log('Texto copiado com sucesso!');
+      notifySuccess();
     } catch (err) {
-      console.error('Falha ao copiar o texto: ', err);
+      notifyError();
     }
   }
+
+  const handleScroll = debounce(() => {
+    const position = window.scrollY;
+    setScrollPosition(position);
+  }, 50);
 
   function redirectToUrl(url: string): void {
     window.location.href = url;
