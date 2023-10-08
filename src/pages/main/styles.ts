@@ -10,7 +10,7 @@ export const Main = styled.main`
 export const Banner = styled.div`
   width: 100%;
   /* background: url('https://via.placeholder.com/1960x566'); */
-  background: url('/public/assets/banner.webp');
+  background: url('/assets/banner.webp');
   background-repeat: no-repeat;
   height: 488px;
   display: flex;
@@ -166,7 +166,7 @@ export const Section = styled.section`
 `;
 
 export const CTAContainer = styled.div`
-  background: url('/public/assets/images/banner-desktop-schedule.webp');
+  background: url('/assets/images/banner-desktop-schedule.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -211,7 +211,7 @@ export const AboutContainer = styled.div`
 
 export const Profile = styled.div`
   /* background: url('https://via.placeholder.com/270x270'); */
-  background: url('/public/assets/images/profile.webp');
+  background: url('/assets/images/profile.webp');
   background-size: cover;
   background-position: top; /* Ajuste aqui */
   background-repeat: no-repeat;
