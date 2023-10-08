@@ -20,6 +20,8 @@ export const MainHeader = styled.header<HeaderProps>`
 
   .icon-style {
     stroke: ${({ theme }) => theme.grayScale.white};
+    width: 24px;
+    height: 24px;
 
     * {
       stroke: inherit;
