@@ -10,7 +10,7 @@ const LazyMap = lazy(() => import('../../components/map'));
 const LazyScheduleAppointment = lazy(() => import('../../components/schedule-appointment'))
 
 
-const base_path = '/public/assets/images/procedures'
+const base_path = '/assets/images/procedures'
 
 const procedures = [
   {
