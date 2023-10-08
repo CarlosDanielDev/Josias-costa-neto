@@ -43,7 +43,7 @@ const procedures = [
 export function Main() {
   const [scrollPosition, setScrollPosition] = useState<number>(0)
   const currentDate = new Date().getFullYear();
-  const phoneNumber = '11949829111';
+  const phoneNumber = '11949313064';
   const whatsappText = 'Olá! Vi seu site e estou interessado(a) em saber mais sobre os serviços odontológicos que você oferece. Pode me ajudar?';
 
   const condition = scrollPosition > 50;
@@ -164,9 +164,9 @@ export function Main() {
               </S.ContactInfoLabel>
             </S.ContactInfo>
 
-            <S.ContactInfoValueButton onClick={() => copyToClipboard('11949829111')}>
+            <S.ContactInfoValueButton onClick={() => copyToClipboard(phoneNumber)}>
               <S.ContactInfoValue>
-                (11) 94982-9111
+                (11) 94931-3064
               </S.ContactInfoValue>
               <MdContentCopy />
             </S.ContactInfoValueButton>
@@ -239,8 +239,13 @@ export function Main() {
           </S.FooterMainContent>
           <S.BottomInfoContainer>
             <S.SocialMediaContainer>
-              <FaLinkedin size={32} />
-              <BiLogoInstagramAlt size={32} />
+              <a href="https://www.linkedin.com/in/josias-costa-neto-9b3655104/" target="_blank" style={{ cursor: 'pointer' }}>
+                <FaLinkedin size={32} />
+              </a>
+
+              <a href="https://www.instagram.com/drjosiascostaneto/" target="_blank" style={{ cursor: 'pointer' }}>
+                <BiLogoInstagramAlt size={32} />
+              </a>
             </S.SocialMediaContainer>
             <S.FooterSeparator />
             <S.Copyright>
