@@ -20,9 +20,7 @@ export function MainHeader({ scrolling }: HeaderProps) {
     e.preventDefault();
     setActiveSection(sectionId);
     setActive('none');
-
     const element = document.getElementById(sectionId);
-
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }

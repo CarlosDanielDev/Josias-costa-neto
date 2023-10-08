@@ -3,7 +3,7 @@ import { FaLinkedin } from 'react-icons/fa';
 import { MdContentCopy, MdOutlineEmail, MdOutlineLocationOn, MdOutlinePhone } from 'react-icons/md';
 import { BiLogoInstagramAlt } from 'react-icons/bi'
 import * as S from './styles';
-import { debounce } from '../../components';
+import { debounce } from '../../utils';
 
 const LazyHeader = lazy(() => import('../../components/header'));
 const LazyMap = lazy(() => import('../../components/map'));
