@@ -224,7 +224,7 @@ export const Profile = styled.div`
 
 export const AboutContent = styled.div`
   width: 328px;
-  height: 332px;
+  height: 364px;
   padding: 30px;
   border-radius: 4px;
   background: ${({ theme }) => theme.grayScale.white};
