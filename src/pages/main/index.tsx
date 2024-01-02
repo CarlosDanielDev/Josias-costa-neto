@@ -7,8 +7,8 @@ import { ToastContainer, ToastOptions, toast } from 'react-toastify';
 import { data } from './data';
 import * as S from './styles';
 
-import { debounce } from '../../utils';
-import { phoneNumber, whatsppLink } from '../../constants'
+import { debounce, formatPhoneNumber } from '../../utils';
+import { clinicPhoneNumber, instagramLink, linkedin, mainEmail, secretaryPhoneNumber, whatsppLink } from '../../constants'
 
 const LazyHeader = lazy(() => import('../../components/header'));
 const LazyMap = lazy(() => import('../../components/map'));
@@ -117,7 +117,7 @@ export function Main() {
             <S.CTAText>
               Agende a sua consulta agora mesmo e comece a trilhar o caminho para um sorriso radiante e saudável
             </S.CTAText>
-            <LazyScheduleAppointment />
+            <LazyScheduleAppointment onClick={() => redirectToUrl(whatsppLink)} />
           </S.CTAContainer>
         </S.Section>
         <S.Section>
@@ -157,15 +157,15 @@ export function Main() {
               </S.ContactInfoLabel>
             </S.ContactInfo>
 
-            <S.ContactInfoValueButton onClick={() => copyToClipboard(phoneNumber)}>
+            <S.ContactInfoValueButton onClick={() => copyToClipboard(clinicPhoneNumber)}>
               <S.ContactInfoValue>
-                (11) 94931-3064
+                {formatPhoneNumber(clinicPhoneNumber)}
               </S.ContactInfoValue>
               <MdContentCopy />
             </S.ContactInfoValueButton>
-            <S.ContactInfoValueButton onClick={() => copyToClipboard('11965301321')}>
+            <S.ContactInfoValueButton onClick={() => copyToClipboard(secretaryPhoneNumber)}>
               <S.ContactInfoValue>
-                (11) 96530-1321
+                {formatPhoneNumber(secretaryPhoneNumber)}
               </S.ContactInfoValue>
               <MdContentCopy />
             </S.ContactInfoValueButton>
@@ -176,9 +176,9 @@ export function Main() {
                 E-mail
               </S.ContactInfoLabel>
             </S.ContactInfo>
-            <S.ContactInfoValueButton onClick={() => copyToClipboard('drjosiascostaneto@gmail.com')}>
+            <S.ContactInfoValueButton onClick={() => copyToClipboard(mainEmail)}>
               <S.ContactInfoValue>
-                drjosiascostaneto@gmail.com
+                {mainEmail}
               </S.ContactInfoValue>
               <MdContentCopy />
             </S.ContactInfoValueButton>
@@ -232,11 +232,11 @@ export function Main() {
           </S.FooterMainContent>
           <S.BottomInfoContainer>
             <S.SocialMediaContainer>
-              <a href="https://www.linkedin.com/in/josias-costa-neto-9b3655104/" aria-label="linkedIn" target="_blank" style={{ cursor: 'pointer' }}>
+              <a href={linkedin} aria-label="linkedIn" target="_blank" style={{ cursor: 'pointer' }}>
                 <FaLinkedin size={32} />
               </a>
 
-              <a href="https://www.instagram.com/drjosiascostaneto/" target="_blank" aria-label="instagram" style={{ cursor: 'pointer' }}>
+              <a href={instagramLink} target="_blank" aria-label="instagram" style={{ cursor: 'pointer' }}>
                 <BiLogoInstagramAlt size={32} />
               </a>
             </S.SocialMediaContainer>
